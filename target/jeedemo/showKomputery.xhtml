@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        template="/templates/default.xhtml">
+
+        <ui:define name="content">
+                <h:form>
+                        <h:dataTable value="#{kompBean.allKomputery}" var="item">
+                                <f:facet name="header">#{msg.komputerList}</f:facet>
+                                <h:column>
+                                        <f:facet name="header">#{msg.kompSzybkoscLabel}</f:facet>
+                                        <h:outputText value="#{item.szybkosc}" />
+                                </h:column>
+
+                                <h:column>
+                                        <f:facet name="header">#{msg.yop}</f:facet>
+                                        <h:outputText value="#{item.rejestracja}" />
+                                </h:column>
+                                
+                                <h:column>
+                                        <f:facet name="header">Producent</f:facet>
+                                        <h:outputText value="#{item.firma.nazwa}"/>
+                                </h:column>
+                                
+                                <h:column>
+                                        <f:facet name="header">Wlasciciele</f:facet>
+                                        <h:dataTable value="#{item.wlasciciele}" var="w">
+                                                <h:column>
+                                                        <h:outputText value="#{w.imie}" />
+                                                </h:column>
+                                        </h:dataTable>
+                                </h:column>
+                                
+                                <!-- 
+                                <h:column>
+                                        <f:facet name="header">#{msg.action}</f:facet>
+                                        <h:commandLink value="#{msg.actionDelete}"
+                                                action="#{personBean.deletePerson}" />
+                                        <h:commandLink value=" Details " action="#{personBean.showDetails}"/>
+                                </h:column>
+                                -->
+
+                        </h:dataTable>
+                </h:form>
+
+        </ui:define>
+
+</ui:composition>
